@@ -7,4 +7,4 @@ set_include_path(
 	get_include_path()
 );
 
-require_once 'hamcrest.php';
+require_once 'Hamcrest.php';
