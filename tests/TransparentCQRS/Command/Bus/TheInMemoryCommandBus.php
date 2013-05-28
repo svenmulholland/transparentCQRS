@@ -14,7 +14,7 @@ use Zend\Di\Di;
 class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
-		AnnotationRegistryx	::registerAutoloadNamespace("TransparentCQRS", __DIR__ . "/../../../../src");
+		AnnotationRegistry::registerAutoloadNamespace("TransparentCQRS", __DIR__ . "/../../../../src");
 	}
 
 	/**
