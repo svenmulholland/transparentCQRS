@@ -25,7 +25,6 @@ class AnnotationAwareFactory implements CommandHandlerFactory {
 		$this->dependencyInjectionContainer = $dependencyInjectionContainer;
 		$this->alreadyConstructedCommandHandlers = new Map();
 		$this->registeredCommandHandlerHandlers = new Set();
-		AnnotationRegistry::registerAutoloadNamespace("TransparentCQRS\Command\Handler\Annotations", "/Users/sven/PhpstormProjects/transparentCQRS/src");
 	}
 
 	public function registerCommandHandler($handlerClassName) {
@@ -47,10 +46,11 @@ class AnnotationAwareFactory implements CommandHandlerFactory {
 	private function getTheCommandHandlerThatCanHandleTheCommand(Command $command) {
 		$commandHandlerIterator = $this->registeredCommandHandlerHandlers->getIterator();
 		$commandHandlerIterator->rewind();
-		while($commandHandlerIterator->valid()) {
+		while ($commandHandlerIterator->valid()) {
 			$commandHandler = $commandHandlerIterator->current();
-			if(get_class($command) == $this->commandHandlerReflector->getTheHandledCommandOfTheCommandHandler($commandHandler))
+			if (get_class($command) == $this->commandHandlerReflector->getTheHandledCommandOfTheCommandHandler($commandHandler)) {
 				return $commandHandler;
+			}
 			$commandHandlerIterator->next();
 		}
 	}
@@ -60,7 +60,6 @@ class AnnotationAwareFactory implements CommandHandlerFactory {
 			$commandHandler,
 			$this->registeredCommandHandlerHandlers
 		);
-
 
 		while (!$decorationSequence->isEmpty()) {
 			$decorator = $decorationSequence->pop();
