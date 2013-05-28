@@ -27,25 +27,27 @@ class CommandHandlerReflector {
 			new \ReflectionMethod($commandHandler, "handle")
 		);
 
-		$commandHandlerIterator = $knownCommandHandlers->getIterator();
-		$commandHandlerIterator->rewind();
-		while ($commandHandlerIterator->valid()) {
-			$actualCommandHandler = $commandHandlerIterator->current();
+		foreach($annotationsToSatisfy as $nextAnnotationToSatisfy) {
+			$commandHandlerIterator = $knownCommandHandlers->getIterator();
+			$commandHandlerIterator->rewind();
+			while ($commandHandlerIterator->valid()) {
+				$actualCommandHandler = $commandHandlerIterator->current();
 
-			$reflectedCommandHandler = new \ReflectionClass($actualCommandHandler);
-			$commandHandlerClassAnnotations = $this->annotationReader->getClassAnnotations($reflectedCommandHandler);
-			foreach ($commandHandlerClassAnnotations AS $annotation) {
-				if (array_search($annotation, $annotationsToSatisfy)) {
-					$decoratorSequence->push($actualCommandHandler);
-					$childDecoratorSequence = $this->getDecorationSequence($actualCommandHandler, $knownCommandHandlers);
-					while (!$childDecoratorSequence->isEmpty()) {
-						$childDecorator = $childDecoratorSequence->pop();
-						$decoratorSequence->push($childDecorator);
+				$reflectedCommandHandler = new \ReflectionClass($actualCommandHandler);
+				$commandHandlerClassAnnotations = $this->annotationReader->getClassAnnotations($reflectedCommandHandler);
+				foreach ($commandHandlerClassAnnotations AS $annotation) {
+					if ($annotation == $nextAnnotationToSatisfy) {
+						$decoratorSequence->push($actualCommandHandler);
+						$childDecoratorSequence = $this->getDecorationSequence($actualCommandHandler, $knownCommandHandlers);
+						while (!$childDecoratorSequence->isEmpty()) {
+							$childDecorator = $childDecoratorSequence->pop();
+							$decoratorSequence->push($childDecorator);
+						}
 					}
 				}
-			}
 
-			$commandHandlerIterator->next();
+				$commandHandlerIterator->next();
+			}
 		}
 
 		return $decoratorSequence;

@@ -32,9 +32,6 @@ class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 				)
 			)
 		);
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\LoggingCommandHandler");
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\VarDumpCommandHandler");
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\SingleCommandHandler");
 
 		$commandBus = new InMemoryCommandBus($commandHandlerFactory);
 		$command = CommandBuilder::aCommandWithoutARegisteredHandler()->build();
@@ -57,12 +54,15 @@ class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 				)
 			)
 		);
+
 		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\LoggingCommandHandler");
 		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\VarDumpCommandHandler");
 		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\SingleCommandHandler");
 
 		$commandBus = new InMemoryCommandBus($commandHandlerFactory);
 
-		$commandBus->send(new SingleCommand());
+		$commandBus->send(
+			new SingleCommand()
+		);
 	}
 }
