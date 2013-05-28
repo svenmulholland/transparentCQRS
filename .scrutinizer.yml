@@ -1,5 +1,6 @@
 before_commands:
-    - composer install --dev
+     - composer self-update
+     - composer install --dev
 
 tools:
     php_code_coverage:
