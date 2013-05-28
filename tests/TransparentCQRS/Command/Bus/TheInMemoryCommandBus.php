@@ -42,7 +42,7 @@ class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @test
 	 */
-	public function annot() {
+	public function justATestWithoutAssertion() {
 
 		$commandHandlerFactory = new AnnotationAwareFactory(
 			new Di(),
