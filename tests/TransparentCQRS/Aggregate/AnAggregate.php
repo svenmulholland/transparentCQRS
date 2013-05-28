@@ -22,6 +22,17 @@ class AnAggregate extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @test
+	 */
+	public function includesAllAppliedEventsInTheActualChangeSet() {
+		$aggregateRoot = AggregateBuilder::anAggregate()->build();
+
+		$aggregateRoot->doSomething();
+
+		assertThat($aggregateRoot->getChanges(), contains(anInstanceOf("Builder\\Events\\SupportedEvent")));
+	}
+
+	/**
+	 * @test
 	 * @expectedException \DomainException
 	 */
 	public function throwsADomainExceptionIfTheAggregateDoestNotSupportTheProvidedEvent() {

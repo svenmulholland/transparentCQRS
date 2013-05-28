@@ -3,25 +3,16 @@
 namespace TransparentCQRS\Command\Bus;
 
 use TransparentCQRS\Command\Command;
+use TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory;
 
 class InMemoryCommandBus extends CommandBus {
 
-	public function __construct() {
-		$this->initHandlers();
+	public function __construct(CommandHandlerFactory $commandHandlerFactory) {
+		$this->commandHandlerFactory = $commandHandlerFactory;
 	}
 
 	public function send(Command $command) {
-		if ($this->commandHandlers->offsetExists($this->commandName($command))) {
-			$commandHandler = $this->commandHandlers->offsetGet($this->commandName($command));
-			$commandHandler->handle($command);
-		} else {
-			throw new \DomainException("There's no CommandHandler for the " . get_class($command) . " type");
-		}
-	}
-
-	private function commandName(Command $command) {
-		return get_class($command);
+		$commandHandler = $this->getHandler($command);
+		$commandHandler->handle($command);
 	}
 }
-
-?>

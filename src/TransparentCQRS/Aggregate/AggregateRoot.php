@@ -45,5 +45,3 @@ abstract class AggregateRoot {
 		return $this->changes;
 	}
 }
-
-?>

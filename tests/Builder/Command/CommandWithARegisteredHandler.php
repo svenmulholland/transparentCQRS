@@ -4,6 +4,6 @@ namespace Builder\Command;
 
 use TransparentCQRS\Command\Command;
 
-class CommandWithRegisteredHandler extends Command {
+class CommandWithARegisteredHandler extends Command {
 
 }

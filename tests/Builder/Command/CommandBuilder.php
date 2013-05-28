@@ -10,7 +10,7 @@ class CommandBuilder {
 
 	public static function aCommandWithARegisteredHandler() {
 		$commandBuilder = new CommandBuilder(
-			new CommandWithRegisteredHandler()
+			new CommandWithARegisteredHandler()
 		);
 		return $commandBuilder;
 	}

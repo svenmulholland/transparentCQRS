@@ -1,0 +1,12 @@
+TransparentCQRS\Aggregate\AnAggregate
+ [x] Doest not include an event loaded from history in the actual change set
+ [x] Includes all applied events in the actual change set
+ [x] Throws a domain exception if the aggregate doest not support the provided event
+
+TransparentCQRS\Command\Bus\TheInMemoryCommandBus
+ [x] Throws a domain exception if no handler is registered for the given command
+ [x] Annot
+
+TransparentCQRS\Command\Handler\ACommandHandler
+ [x] Invokes the handle method of the targeted command handler
+
