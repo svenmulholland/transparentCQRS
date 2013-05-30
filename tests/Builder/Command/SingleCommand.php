@@ -5,6 +5,6 @@ namespace Builder\Command;
 
 use TransparentCQRS\Command\Command;
 
-class SingleCommand extends Command{
+class SingleCommand extends Command {
 
 }

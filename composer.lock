@@ -3,8 +3,260 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ac369ec5a99a01cd281bc4b397e61b60",
+    "hash": "e69577d1811e23273862b220ca97a5b3",
     "packages": [
+        {
+            "name": "aza/clibase",
+            "version": "v1.1",
+            "target-dir": "Aza/Components/CliBase",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anizoptera/AzaCliBase.git",
+                "reference": "v1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anizoptera/AzaCliBase/zipball/v1.1",
+                "reference": "v1.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "aza/libevent": "Used for storing one main event base for application",
+                "ext-libevent": "Used for storing one main event base for application and save availability flag",
+                "ext-pcntl": "Used everywhere in component. Really it's a requirement for normal work.",
+                "ext-posix": "Used everywhere in component. Really it's a requirement for normal work.",
+                "ext-proctitle": "Used to change process title"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Aza\\Components\\CliBase": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amal Samally",
+                    "email": "amal.samally@gmail.com",
+                    "homepage": "https://github.com/amal"
+                },
+                {
+                    "name": "AzaGroup Members"
+                }
+            ],
+            "description": "AzaCliBase - Anizoptera CMF component with basic functionality and helper methods for CLI and Daemon applications (forks, libevent, etc..).",
+            "homepage": "https://github.com/Anizoptera/AzaCliBase",
+            "keywords": [
+                "cli",
+                "daemon",
+                "exit code",
+                "fork",
+                "helper",
+                "libevent",
+                "pcntl",
+                "posix",
+                "signal",
+                "utility"
+            ],
+            "time": "2013-05-28 13:02:20"
+        },
+        {
+            "name": "aza/libevent",
+            "version": "v1.1",
+            "target-dir": "Aza/Components/LibEvent",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anizoptera/AzaLibEvent.git",
+                "reference": "v1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anizoptera/AzaLibEvent/zipball/v1.1",
+                "reference": "v1.1",
+                "shasum": ""
+            },
+            "require": {
+                "aza/clibase": ">=1.0,<2.0",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "aza/socket": ">=1.0,<2.0"
+            },
+            "suggest": {
+                "ext-libevent": "Really it's a requirement for normal work."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Aza\\Components\\LibEvent": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amal Samally",
+                    "email": "amal.samally@gmail.com",
+                    "homepage": "https://github.com/amal"
+                },
+                {
+                    "name": "AzaGroup Members"
+                }
+            ],
+            "description": "AzaLibEvent - Simple, powerful and easy to use OOP wrapper for the LibEvent PHP bindings. Component from Anizoptera CMF.",
+            "homepage": "https://github.com/Anizoptera/AzaLibEvent",
+            "keywords": [
+                "async",
+                "event",
+                "libevent",
+                "sockets",
+                "stream",
+                "timers"
+            ],
+            "time": "2013-05-28 13:02:36"
+        },
+        {
+            "name": "aza/socket",
+            "version": "v1.0.2",
+            "target-dir": "Aza/Components/Socket",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anizoptera/AzaSocket.git",
+                "reference": "v1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anizoptera/AzaSocket/zipball/v1.0.2",
+                "reference": "v1.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-sockets": "Used for maximum efficiency"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Aza\\Components\\Socket": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amal Samally",
+                    "email": "amal.samally@gmail.com",
+                    "homepage": "https://github.com/amal"
+                },
+                {
+                    "name": "AzaGroup Members"
+                }
+            ],
+            "description": "AzaSocket - Anizoptera CMF sockets abstraction component. Provides convenient universal API for using sockets in PHP (via sockets or stream extensions).",
+            "homepage": "https://github.com/Anizoptera/AzaSocket",
+            "keywords": [
+                "Socket",
+                "accept",
+                "client",
+                "non-block",
+                "pair",
+                "server",
+                "tcp",
+                "unix"
+            ],
+            "time": "2013-05-28 13:05:06"
+        },
+        {
+            "name": "aza/thread",
+            "version": "v1.1",
+            "target-dir": "Aza/Components/Thread",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anizoptera/AzaThread.git",
+                "reference": "v1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anizoptera/AzaThread/zipball/v1.1",
+                "reference": "v1.1",
+                "shasum": ""
+            },
+            "require": {
+                "aza/clibase": ">=1.0,<2.0",
+                "aza/libevent": ">=1.0,<2.0",
+                "aza/socket": ">=1.0,<2.0",
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-libevent": "Only synchronous compatibility mode will be available without it",
+                "ext-pcntl": "Only synchronous compatibility mode will be available without it",
+                "ext-posix": "Only synchronous compatibility mode will be available without it"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Aza\\Components\\Thread": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amal Samally",
+                    "email": "amal.samally@gmail.com",
+                    "homepage": "https://github.com/amal"
+                },
+                {
+                    "name": "AzaGroup Members"
+                }
+            ],
+            "description": "AzaThread - Anizoptera CMF simple and powerful threads emulation component for PHP (based on forks).",
+            "homepage": "https://github.com/Anizoptera/AzaThread",
+            "keywords": [
+                "Multi-thread",
+                "Thread",
+                "async",
+                "daemon",
+                "fork",
+                "parallel",
+                "serialization"
+            ],
+            "time": "2013-05-28 13:05:37"
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.0",
@@ -385,16 +637,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "1.2.10",
+            "version": "1.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "1.2.10"
+                "reference": "1.2.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.10",
-                "reference": "1.2.10",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1.2.11",
+                "reference": "1.2.11",
                 "shasum": ""
             },
             "require": {
@@ -402,6 +654,9 @@
                 "phpunit/php-file-iterator": ">=1.3.0@stable",
                 "phpunit/php-text-template": ">=1.1.1@stable",
                 "phpunit/php-token-stream": ">=1.1.3@stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "suggest": {
                 "ext-dom": "*",
@@ -413,7 +668,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -434,7 +689,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-05-13 05:49:10"
+            "time": "2013-05-23 18:23:24"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -952,6 +1207,49 @@
                 "zf2"
             ],
             "time": "2013-05-01 21:53:05"
+        },
+        {
+            "name": "zendframework/zend-servicemanager",
+            "version": "2.2.0",
+            "target-dir": "Zend/ServiceManager",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendServiceManager.git",
+                "reference": "release-2.2.0rc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendServiceManager/zipball/release-2.2.0rc3",
+                "reference": "release-2.2.0rc3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "zendframework/zend-di": "Zend\\Di component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\ServiceManager\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "keywords": [
+                "servicemanager",
+                "zf2"
+            ],
+            "time": "2013-05-08 18:00:17"
         },
         {
             "name": "zendframework/zend-stdlib",

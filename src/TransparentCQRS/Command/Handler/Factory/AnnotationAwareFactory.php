@@ -31,6 +31,12 @@ class AnnotationAwareFactory implements CommandHandlerFactory {
 		$this->registeredCommandHandlerHandlers->add($handlerClassName);
 	}
 
+	public function registerCommandHandlers(array $handlerClassNames) {
+		foreach ($handlerClassNames as $handlerClassName) {
+			$this->registeredCommandHandlerHandlers->add($handlerClassName);
+		}
+	}
+
 	public function create($command) {
 		if ($this->alreadyConstructedCommandHandlers->hasKey($command) == false) {
 			$handlerClassName = $this->getTheCommandHandlerThatCanHandleTheCommand($command);

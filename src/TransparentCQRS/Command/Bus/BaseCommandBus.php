@@ -7,7 +7,7 @@ use TransparentCQRS\Command\Command;
 use TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory;
 use Zend\Di\Di;
 
-abstract class CommandBus {
+abstract class BaseCommandBus {
 
 	protected $commandHandlerFactory;
 

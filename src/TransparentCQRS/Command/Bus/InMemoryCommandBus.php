@@ -5,7 +5,7 @@ namespace TransparentCQRS\Command\Bus;
 use TransparentCQRS\Command\Command;
 use TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory;
 
-class InMemoryCommandBus extends CommandBus {
+class InMemoryCommandBus extends BaseCommandBus {
 
 	public function __construct(CommandHandlerFactory $commandHandlerFactory) {
 		$this->commandHandlerFactory = $commandHandlerFactory;

@@ -10,42 +10,46 @@ use Doctrine\Common\Cache\ApcCache;
 use TransparentCQRS\Command\Handler\Factory\AnnotationAwareFactory;
 use TransparentCQRS\Command\Handler\Reflection\CommandHandlerReflector;
 use Zend\Di\Di;
+use Zend\ServiceManager\ServiceManager;
 
 class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		AnnotationRegistry::registerAutoloadNamespace("TransparentCQRS", __DIR__ . "/../../../../src");
 	}
-
-	/**
-	 * @test
-	 * @expectedException \DomainException
-	 */
-	public function throwsADomainExceptionIfNoHandlerIsRegisteredForTheGivenCommand() {
-		$commandHandlerFactory = new AnnotationAwareFactory(
-			new Di(),
-			new CommandHandlerReflector(
-				new CachedReader(
-					new AnnotationReader(),
-					new ApcCache(),
-					$debug = true
-				)
-			)
-		);
-
-		$commandBus = new InMemoryCommandBus($commandHandlerFactory);
-		$command = CommandBuilder::aCommandWithoutARegisteredHandler()->build();
-
-		$commandBus->send($command);
-	}
+//
+//	/**
+//	 * @test
+//	 */
+//	public function triesToCreateACommandHandlerTroughTheCommandHandlerFactory() {
+//		$command = CommandBuilder::aCommandWithoutARegisteredHandler()->build();
+//$ch=\Mockery::mock("TransparentCQRS\Command\Command")
+//	->shouldReceive("handle")
+//	->once()
+//	->with($command);
+//
+//		$commandHandlerFactory = \Mockery::mock("TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory");
+//		$commandHandlerFactory->shouldReceive("create")
+//							  ->with($command)
+//							  ->once()
+//							  ->andReturn(
+//								$ch
+//							  );
+//
+//		$commandBus = new InMemoryCommandBus($commandHandlerFactory);
+//
+//
+//		$commandBus->send($command);
+//	}
 
 	/**
 	 * @test
 	 */
 	public function justATestWithoutAssertion() {
+		$di = new Di();
 
 		$commandHandlerFactory = new AnnotationAwareFactory(
-			new Di(),
+			$di,
 			new CommandHandlerReflector(
 				new CachedReader(
 					new AnnotationReader(),
@@ -55,11 +59,18 @@ class TheInMemoryCommandBus extends \PHPUnit_Framework_TestCase {
 			)
 		);
 
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\LoggingCommandHandler");
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\VarDumpCommandHandler");
-		$commandHandlerFactory->registerCommandHandler("Builder\\Command\\Handler\\SingleCommandHandler");
+		$commandHandlerFactory->registerCommandHandlers(
+			array(
+				"Builder\\Command\\Handler\\LoggingCommandHandler",
+				"Builder\\Command\\Handler\\VarDumpCommandHandler",
+				"Builder\\Command\\Handler\\SingleCommandHandler"
+			)
+		);
 
-		$commandBus = new InMemoryCommandBus($commandHandlerFactory);
+		$di->instanceManager()->addSharedInstance($commandHandlerFactory, "TransparentCQRS\Command\Handler\Factory\AnnotationAwareFactory");
+		$di->instanceManager()->setTypePreference("TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory", array("TransparentCQRS\Command\Handler\Factory\AnnotationAwareFactory"));
+
+		$commandBus = $di->get("TransparentCQRS\Command\Bus\InMemoryCommandBus");
 
 		$commandBus->send(
 			new SingleCommand()

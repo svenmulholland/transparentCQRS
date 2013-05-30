@@ -5,10 +5,10 @@ namespace Builder\Command\Handler;
 
 use TransparentCQRS\Command\Command;
 use TransparentCQRS\Command\Handler\CommandHandler;
-use TransparentCQRS\Command\Handler\Annotations\Dumping;
-
+use TransparentCQRS\Command\Handler\Annotations\IsCommandHandler;
+use TransparentCQRS\Command\Handler\Annotations\DecoratedBy;
 /**
- * @Dumping
+ * @IsCommandHandler(name="Dumping")
  */
 class VarDumpCommandHandler extends CommandHandler{
 
@@ -16,6 +16,9 @@ class VarDumpCommandHandler extends CommandHandler{
 		$this->next = $next;
 	}
 
+	/**
+	 * @DecoratedBy({"Logging"})
+	 */
 	public function handle(Command $command) {
 		var_dump($command);
 		$this->next->handle($command);

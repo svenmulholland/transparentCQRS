@@ -2,8 +2,10 @@
 
 namespace TransparentCQRS\Command\Handler;
 
-abstract class CommandHandler {
+use TransparentCQRS\Command\Command;
 
+abstract class CommandHandler {
+	public abstract function handle(Command $command);
 }
 
 ?>

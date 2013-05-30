@@ -4,8 +4,7 @@ TransparentCQRS\Aggregate\AnAggregate
  [x] Throws a domain exception if the aggregate doest not support the provided event
 
 TransparentCQRS\Command\Bus\TheInMemoryCommandBus
- [x] Throws a domain exception if no handler is registered for the given command
- [x] Annot
+ [x] Just a test without assertion
 
 TransparentCQRS\Command\Handler\ACommandHandler
  [x] Invokes the handle method of the targeted command handler

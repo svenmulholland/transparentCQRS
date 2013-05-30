@@ -2,17 +2,22 @@
 
 namespace Builder\Command\Handler;
 
-
-use Builder\Command\SingleCommand;
+use TransparentCQRS\Command\Command;
 use TransparentCQRS\Command\Handler\CommandHandler;
+use TransparentCQRS\Command\Handler\Annotations\Handles;
+use TransparentCQRS\Command\Handler\Annotations\DecoratedBy;
+use TransparentCQRS\Command\Handler\Annotations\IsCommandHandler;
 
+/**
+ * @IsCommandHandler
+ */
 class SingleCommandHandler extends CommandHandler {
 
 	/**
-	 * @TransparentCQRS\Command\Handler\Annotations\Logging
-	 * @TransparentCQRS\Command\Handler\Annotations\Dumping
+	 * @Handles(command="Builder\Command\SingleCommand")
+	 * @DecoratedBy({"Dumping"})
 	 */
-	public function handle(SingleCommand $command) {
+	public function handle(Command $command) {
 		echo "single command handled";
 	}
 }

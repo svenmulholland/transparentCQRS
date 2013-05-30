@@ -2,12 +2,12 @@
 
 namespace Builder\Command\Handler;
 
-
 use TransparentCQRS\Command\Command;
 use TransparentCQRS\Command\Handler\CommandHandler;
-use TransparentCQRS\Command\Handler\Annotations\Logging;
+use TransparentCQRS\Command\Handler\Annotations\IsCommandHandler;
+
 /**
- * @Logging
+ * @IsCommandHandler(name="Logging")
  */
 class LoggingCommandHandler extends CommandHandler {
 
