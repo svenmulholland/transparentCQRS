@@ -4,8 +4,9 @@ TransparentCQRS\Aggregate\AnAggregate
  [x] Throws a domain exception if the aggregate doest not support the provided event
 
 TransparentCQRS\Command\Bus\TheInMemoryCommandBus
+ [x] Tries to create a command handler trough the command handler factory
  [x] Just a test without assertion
 
-TransparentCQRS\Command\Handler\ACommandHandler
- [x] Invokes the handle method of the targeted command handler
+TransparentCQRS\Event\Dispatcher\ThreadedEventDispatcher
+ [x] Thread test
 

@@ -10,9 +10,7 @@ class CommandHandlerBuilder {
 
 	public static function aSingleCommandHandler() {
 		$commandHandlerBuilder = new CommandHandlerBuilder(
-			new LoggingCommandHandler(
-				new SingleCommandHandler()
-			)
+			new SingleCommandHandler()
 		);
 		return $commandHandlerBuilder;
 	}
