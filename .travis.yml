@@ -11,7 +11,5 @@ before_script:
   - composer self-update
   - composer install
   - sh -c 'if [ $(php -r "echo PHP_MINOR_VERSION;") -le 4 ]; then echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
-  - pecl install pcntl
-  - pecl install posix
   - pecl install channel://pecl.php.net/libevent-0.1.0
 script: phpunit --configuration tests/phpunit.xml --coverage-text
