@@ -1,0 +1,33 @@
+setup di + in memory bus
+
+$di = new Di();
+
+		$commandHandlerFactory = new AnnotationAwareFactory(
+			$di,
+			new Parser(
+				new CachedReader(
+					new AnnotationReader(),
+					new ApcCache(),
+					$debug = true
+				)
+			)
+		);
+
+		$commandHandlerFactory->registerCommandHandlers(
+			array(
+				"Builder\\Command\\Handler\\LoggingCommandHandler",
+				"Builder\\Command\\Handler\\VarDumpCommandHandler",
+				"Builder\\Command\\Handler\\SingleCommandHandler"
+			)
+		);
+
+		$di->instanceManager()->addSharedInstance($commandHandlerFactory, "TransparentCQRS\Command\Handler\Factory\AnnotationAwareFactory");
+		$di->instanceManager()->setTypePreference("TransparentCQRS\Command\Handler\Factory\CommandHandlerFactory", array("TransparentCQRS\Command\Handler\Factory\AnnotationAwareFactory"));
+
+		$commandBus = $di->get("TransparentCQRS\Command\Bus\InMemoryCommandBus");
+
+		$commandBus->send(
+			new SingleCommand()
+		);
+
+###############################################################

@@ -1,0 +1,13 @@
+- Build a configuration for zend di etc.. via the builder pattern
+    -> implement the ability to specify pipeline handlers for all command handlers
+       without annotations direct in the builder
+- Review Memento Pattern for Events
+- Think about a generic way for the apply methods of the aggregate root
+    -> are annotations a solution?
+- Implement the missing event handling (see ThreadPool / Threads in vendor directory)
+- cleanup composer dependencies
+- implement a merging command handler, review ddd-cqrs google group for context solution
+- implement a repository
+- implement a test framework
+- documentation
+- review jms serializer for message transport
